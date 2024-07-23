@@ -1,0 +1,22 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: solid black 1px;
+  height: 100vh;
+  background-color: #ffc2a0;
+}
+
+.heading{
+  color: #ff8542;
+}
+.simple-todos-container {
+  background-color: #ffffff;
+  width: 80%;
+  height: 80%;
+  margin: 20px;
+  border-radius: 10px;
+  overflow-y: auto;
+}
