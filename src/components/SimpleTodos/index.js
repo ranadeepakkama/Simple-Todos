@@ -4,6 +4,8 @@ import TodoItem from '../TodoItem'
 
 import './index.css'
 
+const {v4: uuidv4} = require('uuid')
+
 const initialTodosList = [
   {
     id: 1,
@@ -42,6 +44,7 @@ const initialTodosList = [
 class SimpleTodos extends Component {
   state = {
     todosList: initialTodosList,
+    newTodo: '',
   }
 
   deleteTodo = id => {
@@ -53,13 +56,51 @@ class SimpleTodos extends Component {
     })
   }
 
+  addNewTodo = () => {
+    const {newTodo} = this.state
+    const numberMatch = newTodo.match(/\d+$/)
+    const number = numberMatch ? parseInt(numberMatch[0], 10) : 1
+    const baseTodoTitle = newTodo.replace(/\d+$/, '').trim()
+
+    const newTodos = Array.from({length: number}).map((_, index) => ({
+      id: uuidv4(),
+      title: `${baseTodoTitle} ${index + 1}`,
+    }))
+
+    this.setState(prevState => ({
+      todosList: [...prevState.todosList, ...newTodos],
+      newTodo: '',
+    }))
+  }
+
+  onChangeInput = e => {
+    this.setState({newTodo: e.target.value})
+  }
+
   render() {
-    const {todosList} = this.state
+    const {todosList, newTodo} = this.state
 
     return (
       <div className="app-container">
         <div className="simple-todos-container">
           <h1 className="heading">Simple Todos</h1>
+          <div className="add-butn-container">
+            <input
+              className="input-ele"
+              type="text"
+              onChange={this.onChangeInput}
+              value={newTodo}
+              placeholder="Enter todo (e.g., 'Task 5' to add 5 todos)"
+            />
+            <button
+              type="button"
+              className="add-butn"
+              onClick={this.addNewTodo}
+            >
+              Add
+            </button>
+          </div>
+
           <ul className="todos-list">
             {todosList.map(eachTodo => (
               <TodoItem

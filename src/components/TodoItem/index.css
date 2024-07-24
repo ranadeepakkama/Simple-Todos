@@ -1,9 +1,27 @@
 .delete {
   padding: 10px;
   border-radius: 5px;
-  background-color: #ffffff;
-  border-width: 0px;
   border-color: #000000;
+  border-width: 2px;
+  background-color: transparent;
+}
+.checkbox {
+  margin-right: 10px;
+}
+.title-strike{
+  text-decoration: line-through;
+}
+.checkbox-title {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  padding-left: 7px;
+}
+.butn-container {
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .todo-item {
   display: flex;
@@ -13,6 +31,28 @@
   padding-left: 15px;
   width: 70%;
   margin-left: 80px;
+}
+.title-input {
+  width: 60%;
+  height: 25px;
+  background-color: transparent;
+  font-size: 14px;
+  border-width: 0px;
+}
+.delete-btn {
+  color: #ff0b37;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border-width: 1px;
+  font-size: 14px;
+}
+.edit-butn {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border-width: 1px;
+  font-size: 14px;
 }
 
 .list-container {
